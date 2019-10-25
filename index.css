@@ -3,13 +3,38 @@
 }
 
 header {
-  width: 100%;
   text-align: center;
-  padding: 15px auto 15px auto;
-  justify-content: center;
 }
 
-h1 {
+.container-tile {
+  margin: 0 auto 0 auto;
+  border: 1px solid black;
+  width: 50%;
+  padding-bottom: 20px;
+}
+
+.container-tile h2 {
   text-align: center;
-  
+}
+
+.stats {
+  text-align: center;
+}
+
+.container-tile p span {
+  padding-left: 12px;
+}
+
+.question-container {
+  padding: 0 10% 0 10%;
+}
+
+.question {
+  text-align: left;
+}
+
+.submit-button {
+  margin: 20px auto 0 auto;
+  width: 100%;
+  padding: 8px;
 }
