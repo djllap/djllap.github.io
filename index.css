@@ -1,0 +1,15 @@
+* {
+  box-sizing: border-box;
+}
+
+header {
+  width: 100%;
+  text-align: center;
+  padding: 15px auto 15px auto;
+  justify-content: center;
+}
+
+h1 {
+  text-align: center;
+  
+}
