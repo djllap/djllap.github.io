@@ -36,20 +36,55 @@ const STORE = {
 
         feedback: {
           correct: {
-            title: '',
-            text: '',
+            title: 'CORRECT',
+            text: 'Wow, you really know your stuff!',
             img: ''
           },
           incorect: {
-            title: '',
-            text: '',
+            title: 'WRONG',
+            text: 'The largest known carnivorous dinosaur is the Spinosaurus, which could grow to be over 50 feet long and weighed in at over 20 tonnes -- three times the weight of a T-rex.',
             img: ''
           }
         }
       },
-      {
 
+      {
+        title: 'Question 2',
+        text: 'What was the the first dinosaur ever discovered?',
+        img: '',
+        options: [
+          {
+            text: 'Ornithomimus',
+            isCorrect: false,
+          },
+          {
+            text: 'Giganotosaurus',
+            isCorrect: false,
+          },
+          {
+            text: 'Brachiosaurus',
+            isCorrect: false,
+          },
+          {
+            text: 'Megalosaurus',
+            isCorrect: true,
+          },
+        ],
+
+        feedback: {
+          correct: {
+            title: 'CORRECT',
+            text: 'Wow, did you really know that, or did you look it up?',
+            img: ''
+          },
+          incorect: {
+            title: 'WRONG',
+            text: 'The Megalosaurus was the first dinosuar discovererd and wasn\'t found until the 1820s',
+            img: ''
+          }
+        }
       },
+
       {
 
       }
