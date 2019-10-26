@@ -5,6 +5,7 @@ const STORE = {
     // Index '0' is the landing page.
     // Index 'questions.length' is the 'done with quiz' page.
     pageIndex: 0,
+
     questions: [
       {
         title: 'How much do you know about Dinosaurs?'
@@ -86,8 +87,115 @@ const STORE = {
       },
 
       {
+        title: 'Question 3',
+        text: 'What does the word dinosaur mean?',
+        img: '',
+        options: [
+          {
+            text: 'Terrible Lizzard',
+            isCorrect: true,
+          },
+          {
+            text: 'Giant Creature',
+            isCorrect: false,
+          },
+          {
+            text: 'Big-Boned',
+            isCorrect: false,
+          },
+          {
+            text: 'Horrific Bird',
+            isCorrect: false,
+          },
+        ],
 
-      }
+        feedback: {
+          correct: {
+            title: 'CORRECT',
+            text: 'Don\'t let it go to your head too much.',
+            img: ''
+          },
+          incorect: {
+            title: 'WRONG',
+            text: 'The term “dinosaur” wasn\'t coined until 1842, by English paleontologist Sir Richard Owen; "dinosaur" translates to “terrible reptile.”',
+            img: ''
+          }
+        }
+      },
+
+      {
+        title: 'Question 4',
+        text: 'What were the plates on a stegosaurus\'s back used for?',
+        img: '',
+        options: [
+          {
+            text: 'Cooling',
+            isCorrect: true,
+          },
+          {
+            text: 'Armor',
+            isCorrect: false,
+          },
+          {
+            text: 'Aerodynamics',
+            isCorrect: false,
+          },
+          {
+            text: 'Flight',
+            isCorrect: false,
+          },
+        ],
+
+        feedback: {
+          correct: {
+            title: 'CORRECT',
+            text: 'Are you sure you\'re not cheating? How could you possibly know that?',
+            img: ''
+          },
+          incorect: {
+            title: 'WRONG',
+            text: 'Veins in Stegosaurus\' spinal plates suggested that they would not have been used as protective armor; more than likely, they were used to help the dinosaur cool off its massive body.',
+            img: ''
+          }
+        }
+      },
+
+      {
+        title: 'Question 5',
+        text: 'What dinosaur had the largest head?',
+        img: '',
+        options: [
+          {
+            text: 'Diplodocus',
+            isCorrect: false,
+          },
+          {
+            text: 'Carnotaurus',
+            isCorrect: false,
+          },
+          {
+            text: 'Gigantosaurus',
+            isCorrect: false,
+          },
+          {
+            text: 'Triceratops',
+            isCorrect: true,
+          },
+        ],
+
+        feedback: {
+          correct: {
+            title: 'CORRECT',
+            text: 'Good job, I guess.',
+            img: ''
+          },
+          incorect: {
+            title: 'WRONG',
+            text: 'The Triceratops had the largest shielded skull of any known dinosaur. With a thick bony shield that covered its neck, a Triceratops skull could grow to be as long as 6 and ½ feet long.',
+            img: ''
+          }
+        }
+      },
     ]
   }    
 }
