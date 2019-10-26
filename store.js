@@ -7,27 +7,45 @@ const STORE = {
     pageIndex: 0,
     questions: [
       {
-        number: 1,
+        title: 'How much do you know about Dinosaurs?'
+        text: 'Everyone loves Dinosaurs, but how much do we really know about them? Take this quiz to find out if your knowledge is up to snuff.'
+      },
+
+      {
         title: 'Question 1',
-        text: 'Which is the biggest dinosaur?',
+        text: 'What was the largest canivorous dinosaur?',
+        img: '',
         options: [
           {
-            text: 'T-Rex',
+            text: 'Allosaurus',
+            isCorrect: false,
+          },
+          {
+            text: 'Baryonyx',
+            isCorrect: false,
+          },
+          {
+            text: 'Spinosaurus',
             isCorrect: true,
           },
           {
-            text: 'T-Minus',
-            isCorrect: false,
-          },
-          {
-            text: 'T-Minus-Minus',
-            isCorrect: false,
-          },
-          {
-            text: 'T-Minus-Minus-Minus',
+            text: 'Megalosaurus',
             isCorrect: false,
           },
         ],
+
+        feedback: {
+          correct: {
+            title: '',
+            text: '',
+            img: ''
+          },
+          incorect: {
+            title: '',
+            text: '',
+            img: ''
+          }
+        }
       },
       {
 
