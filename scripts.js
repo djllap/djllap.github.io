@@ -31,7 +31,8 @@ function generateInitQuestionBox() {
 // pageIndex: -1
 function generateLandingContainer() {
   return  `
-    <h2>BEGIN QUIZ</h2>
+    <h2>How much do you know about Dinosaurs?</h2>
+    <p>Everyone loves Dinosaurs, but how much do we really know about them? Take this quiz to find out if your knowledge is up to snuff.</p>
     <form id="js-landing-form">
       <button class="submit-button" type="submit">BEGIN QUIZ</button>
     </form>
