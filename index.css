@@ -48,3 +48,15 @@ img {
   width: 100%;
   padding: 8px;
 }
+
+input[type="radio"] {
+  width: 100%;
+  display: none;
+}
+
+.inputButton {
+  width: 1000px;
+  text-align: center;
+  color: red;
+  border: 1px solid black;
+}
