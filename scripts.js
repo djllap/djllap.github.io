@@ -45,13 +45,13 @@ function generateQuestion(question) {
       <input type="radio" name="choice" value="0" id="choice1">
       <label for="choice1">${question.options[0].text}</label>
       <br>
-      <input type="radio" name="choice" value="0" id="choice2">
+      <input type="radio" name="choice" value="1" id="choice2">
       <label for="choice2">${question.options[1].text}</label>
       <br>
-      <input type="radio" name="choice" value="0" id="choice3">
+      <input type="radio" name="choice" value="2" id="choice3">
       <label for="choice3">${question.options[2].text}</label>
       <br>
-      <input type="radio" name="choice" value="0" id="choice4">
+      <input type="radio" name="choice" value="3" id="choice4">
       <label for="choice4">${question.options[3].text}</label>
       <button class="submit-button" type="submit">CLICK ME!</button>
     </form>
