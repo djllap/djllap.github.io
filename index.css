@@ -70,6 +70,8 @@ input[type="radio"] {
   /* visibility: hidden; */
   /* width: 0px; */
   opacity: 1.0;
+  /* min-width: 100%; */
+  /* min-height: 100%; */
   /* width: 100%; */
   /* border: 0px solid white; */
 }
@@ -83,7 +85,6 @@ input[type="radio"] {
   text-align: center;
   color: white;
   font-size: 1.2em;
-
   background-color: darkgreen;
   padding: 10px;
   opacity: 0.8;

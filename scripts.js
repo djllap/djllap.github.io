@@ -65,25 +65,27 @@ function generateQuestion(question) {
       ${question.text}
     </p>
     <form action="submit" id="js-question-box-form" class="question-form">
-      <div class="inputButton">
-        <input type="radio" name="choice" value="0" id="choice1">
-        <label id="firstOption" for="choice1" >${question.options[0].text}</label>
-        <br>
-      </div>
-      <div class="inputButton">
-        <input type="radio" name="choice" value="1" id="choice2">
-        <label for="choice2">${question.options[1].text}</label>
-        <br>
-      </div>
-      <div class="inputButton">
-        <input type="radio" name="choice" value="2" id="choice3">
-        <label for="choice3">${question.options[2].text}</label>
-        <br>
-      </div>
-      <div class="inputButton">
-        <input type="radio" name="choice" value="3" id="choice4">
-        <label for="choice4">${question.options[3].text}</label>
-      </div>
+      <fieldset>
+        <div class="inputButton">
+          <input type="radio" name="choice" value="0" id="choice1"/>
+          <label id="firstOption" for="choice1" >${question.options[0].text}</label>
+          <br>
+        </div>
+        <div class="inputButton">
+          <input type="radio" name="choice" value="1" id="choice2"/>
+          <label for="choice2">${question.options[1].text}</label>
+          <br>
+        </div>
+        <div class="inputButton">
+          <input type="radio" name="choice" value="2" id="choice3"/>
+          <label for="choice3">${question.options[2].text}</label>
+          <br>
+        </div>
+        <div class="inputButton">
+          <input type="radio" name="choice" value="3" id="choice4"/>
+          <label for="choice4">${question.options[3].text}</label>
+        </div>
+      </fieldset>
       <button class="submit-button" type="submit">CLICK ME!</button>
     </form>
   `;
@@ -242,38 +244,12 @@ function handleResultsSubmit() {
 
 function handleTest() {
   $('.container').on('click', '.inputButton', function (event) {
-
     event.stopPropagation();
-    // console.log($(this));
-    // let label = $(this).find("label");
-
-    // console.log(label.prop('id'));
-    // $('#' + label.prop('id')).click();
-
-    let input = $(this).find("input").attr('checked', !$(this).find("input").attr('checked'));
-
-    // console.log(input);
-    // console.log(label);
-    // // alert("hi");
-
-    // // this.checked = true;
-
-    // // console.log($(this).find("input"));
-    // let button = $(this).find("input");
-    // let checkedState = button.prop('checked');
-
-    // if (checkedState) {
-    //   button.attr('checked', false);
-    // } else {
-    //   button.attr('checked', true);
-    // renderBox();
+    let input = $(this).find("input");
+    let checked = input.prop('checked');  
+    input.prop('checked', true);
   });
 }
-
-
-// function handleChecked() {
-//   $('.container').on('checked', '')
-// }
 
 
 // SECTION: - Main
