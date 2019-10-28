@@ -7,30 +7,12 @@
 // SECTION: - Generating HTML Code
 
 // Initialize all containers (Run once at the beginning)
-function generateInitQuestionBox() {
-  return `
-    <div class="stats-and-header">
-      <p class="stats">
-          <span></span>
-          <span></span>
-      </p>
-      <h2></h2>
-    </div>
-    <div class="question-container">
-    </div>
-    <div class="feedback-container">
-    </div>
-    <div class="landing-container">
-    </div>
-    <div class="results-container">
-    </div>
-  `;
-}
 
 // pageIndex: -1
-function generateLandingContainer() {
+function generateLanding() {
   return  `
     <h2>How much do you know about Dinosaurs?</h2>
+    <img alt="Dinosaurs Grazing" src="/resources/img/dinosaurs.jpeg"></img>
     <p>Everyone loves Dinosaurs, but how much do we really know about them? Take this quiz to find out if your knowledge is up to snuff.</p>
     <form id="js-landing-form">
       <button class="submit-button" type="submit">BEGIN QUIZ</button>
@@ -39,7 +21,7 @@ function generateLandingContainer() {
 }
 
 // pageIndex: 0 to questions.length - 1
-function generateStatsAndHeader() {
+function generateStats() {
   let currentQuestion = STORE.quizObj.pageIndex + 1;
   let totalQuestions = STORE.quizObj.questions.length;
   let score = STORE.quizObj.score;
@@ -52,9 +34,10 @@ function generateStatsAndHeader() {
   `;
 }
 
-function generateQuestionContainer(question) {
+function generateQuestion(question) {
   return `
     <h2>${question.title}</h2>
+    <img alt="${question.img.alt}"s6 src="${question.img.url}"></img>
     <p class="question">
       ${question.text}
     </p>
@@ -68,9 +51,14 @@ function generateQuestionContainer(question) {
   `;
 }
 
-function generateFeedbackContainer(feedbackObj) { 
+function generateFeedback(feedbackObj) { 
+  console.log(feedbackObj);
   return `
     <h2>${feedbackObj.title}</h2>
+    <img 
+      alt="${STORE.quizObj.questions[STORE.quizObj.pageIndex].feedback.img.alt}" 
+      src="${STORE.quizObj.questions[STORE.quizObj.pageIndex].feedback.img.url}">
+    </img>
     <p>${feedbackObj.text}</p>
     <form action="submit" id="js-feedback-box-form">
       <button class="submit-button" type="submit">Next Question</button>
@@ -79,7 +67,7 @@ function generateFeedbackContainer(feedbackObj) {
 }
 
 // pageIndex: questions.length
-function generateResultsContainer() {
+function generateResults() {
 
   let currentQuestion = STORE.quizObj.pageIndex + 1;
   let totalQuestions = STORE.quizObj.questions.length;
@@ -88,9 +76,9 @@ function generateResultsContainer() {
   return `
     <h2>Quiz Completed!</h2>
     <div class="results">
-      <h3>Final Score: ${score}</h3>
+      <h3>Final Score: ${score/5*100}%</h3>
     </div>
-    <form>
+    <form action="submit" id="js-results-form">
       <button class="submit-button" type="submit">Start Over!</button>
     </form>
   `;
@@ -98,64 +86,76 @@ function generateResultsContainer() {
 
 // SECTION: - Putting the HTML into the DIVs
 
-function initQuestionBox() {
+function initQuestion() {
+  console.log('initQuestion ran');
   // Run this when generating questions.
   // This should init the <div>'s we are working with.
   let index = STORE.quizObj.pageIndex;
   let question = STORE.quizObj.questions[index];
   
   // Init Empty Divs
-  $('.container-tile').html(generateInitQuestionBox);
+  // $('.container-tile').html(generateInitQuestionBox);
 
   // Fill the Landing <div>
-  $('.landing-container').html(generateLandingContainer());
+  $('.container').html(generateLanding());
 }
 
-function renderQuestionBox() {
+function renderQuestion() {
   // Renders the Question Box content
   let index = STORE.quizObj.pageIndex;
   let question = STORE.quizObj.questions[index];
 
   // const statsAndHeader = generateStatsAndHeader();
-  $('.stats-and-header').html(generateStatsAndHeader());
-  $('.question-container').html(generateQuestionContainer(question));
-  $('.feedback-container').html('');
+  $('.container').html(generateStats() + generateQuestion(question));
 }
 
-function renderFeedbackBox(feedbackBool) {
+function renderFeedback(feedbackBool) {
   // Renders the Answer Box content
   let index = STORE.quizObj.pageIndex;
   let question = STORE.quizObj.questions[index];
   let feedback = question.feedback;
 
   if(feedbackBool) {
-    $('.feedback-container').html(generateFeedbackContainer(feedback.correct));
+    $('.container').html(generateStats() + generateFeedback(feedback.correct));
   } else {
-    $('.feedback-container').html(generateFeedbackContainer(feedback.incorrect));
+    $('.container').html(generateStats() + generateFeedback(feedback.incorrect));
   }
-  $('.question-container').html('');
 }
 
-function renderResultsBox() {
+function renderResults() {
   // Renders Results Content
-  $('.stats-and-header').html('');
-  $('.feedback-container').html('');
-  $('.results-container').html(generateResultsContainer());
+  $('.container').html(generateResults());
+}
+
+function renderBox() {
+  let nav = STORE.quizObj.nav;
+  if (nav === 'landing') {
+    $('.container').html(generateLanding());
+  } else if (nav === 'quiz') {
+    let index = STORE.quizObj.pageIndex;
+    let question = STORE.quizObj.questions[index];
+    renderQuestion();
+  } else if (nav === 'results') {
+    renderResults();
+  }
+  
+
+  
 }
 
 // SECTION: - Handlers
 
 function handleLandingSubmit() {
-  $('.landing-container').on('submit', '#js-landing-form', function (event) {
+  $('.container').on('submit', '#js-landing-form', function (event) {
     event.preventDefault();
-    
-    $('.landing-container').html('');
-    renderQuestionBox();
+    console.log('handle landing submit ran');
+    STORE.quizObj.nav = 'quiz';
+    renderBox();
   });
 }
 
 function handleQuizSubmit() {
-  $('.question-container').on('submit', '#js-question-box-form', function (event) {
+  $('.container').on('submit', '#js-question-box-form', function (event) {
     event.preventDefault();
 
     let pageIndex = STORE.quizObj.pageIndex;
@@ -171,36 +171,47 @@ function handleQuizSubmit() {
 
     if(correctOption === chosenValue) {
       STORE.quizObj.score += 1;
-      renderFeedbackBox(true);
+      renderFeedback(true);
     } else {
-      renderFeedbackBox(false);
+      renderFeedback(false);
     }
 
   });
 }
 
 function handleFeedbackSubmit() {
-  $('.feedback-container').on('submit', '#js-feedback-box-form', function (event) {
+  $('.container').on('submit', '#js-feedback-box-form', function (event) {
     event.preventDefault();
-    
     // Increment the Page
-    if(STORE.quizObj.questions.length - 1 === STORE.quizObj.pageIndex) {
-      // alert('quiz finished!');
-      renderResultsBox();
-    } else {
-      STORE.quizObj.pageIndex += 1;
-      renderQuestionBox();
+    if (STORE.quizObj.pageIndex === STORE.quizObj.questions.length - 1){
+      STORE.quizObj.nav = 'results';
     }
+    STORE.quizObj.pageIndex += 1;
+    renderBox();
   });
+}
+
+function handleResultsSubmit() {
+  $('.container').on('submit', '#js-results-form', function (event){
+    event.preventDefault();
+    console.log('handleResultsSubmit ran');
+    STORE.quizObj.nav = 'quiz';
+    STORE.quizObj.score = 0;
+    STORE.quizObj.pageIndex = 0;
+    renderBox();
+  });
+  
+
 }
 
 
 // SECTION: - Main
 function handleQuestionBox() {
-  initQuestionBox();
+  renderBox();
   handleQuizSubmit();
   handleFeedbackSubmit();
   handleLandingSubmit();
+  handleResultsSubmit();
 }
 
 $(handleQuestionBox);

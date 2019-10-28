@@ -5,6 +5,7 @@ const STORE = {
   quizObj: {
     // Index '0' is the landing page.
     // Index 'questions.length' is the 'done with quiz' page.
+    nav: 'landing',
     pageIndex: 0,
     score: 0,
     questions: [
@@ -180,7 +181,7 @@ const STORE = {
         title: 'Question 5',
         text: 'What dinosaur had the largest head?',
         img: {
-          url: '/resources/img/big-head.jpeg',
+          url: '/resources/img/big-head.jpg',
           alt: 'Dinosaur bobblehead'
         },
         options: [
