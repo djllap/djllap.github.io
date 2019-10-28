@@ -42,10 +42,17 @@ function generateQuestion(question) {
       ${question.text}
     </p>
     <form action="submit" id="js-question-box-form">
-      <input type="radio" name="choice" value="0">${question.options[0].text}<br>
-      <input type="radio" name="choice" value="1">${question.options[1].text}<br>
-      <input type="radio" name="choice" value="2">${question.options[2].text}<br>
-      <input type="radio" name="choice" value="3">${question.options[3].text}<br>
+      <input type="radio" name="choice" value="0" id="choice1">
+      <label for="choice1">${question.options[0].text}</label>
+      <br>
+      <input type="radio" name="choice" value="0" id="choice2">
+      <label for="choice2">${question.options[1].text}</label>
+      <br>
+      <input type="radio" name="choice" value="0" id="choice3">
+      <label for="choice3">${question.options[2].text}</label>
+      <br>
+      <input type="radio" name="choice" value="0" id="choice4">
+      <label for="choice4">${question.options[3].text}</label>
       <button class="submit-button" type="submit">CLICK ME!</button>
     </form>
   `;
