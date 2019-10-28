@@ -36,7 +36,7 @@ function generateLandingContainer() {
     <form id="js-landing-form">
       <button class="submit-button" type="submit">BEGIN QUIZ</button>
     </form>
-  `
+  `;
 }
 
 // pageIndex: 0 to questions.length - 1

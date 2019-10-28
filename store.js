@@ -11,12 +11,18 @@ const STORE = {
       {
         title: 'How much do you know about Dinosaurs?',
         text: 'Everyone loves Dinosaurs, but how much do we really know about them? Take this quiz to find out if your knowledge is up to snuff.',
-        img: '/resources/img/dinosaurs.jpeg'
+        img: {
+          url: '/resources/img/dinosaurs.jpeg',
+          alt: 'Grazing dinosaurs'
+        }
       },
       {
         title: 'Question 1',
         text: 'What was the largest canivorous dinosaur?',
-        img: '/resources/img/t-rex.jpg',
+        img: {
+          url: '/resources/img/t-rex.jpg',
+          alt: 'T-rex'
+        },
         options: [
           {
             text: 'Allosaurus',
@@ -37,7 +43,10 @@ const STORE = {
         ],
 
         feedback: {
-          img: 'resources/img/spinosaurus.jpg',
+          img: {
+            url: 'resources/img/spinosaurus.jpg',
+            alt: 'Spinosaurus'
+          },
           correct: {
             title: 'CORRECT',
             text: 'Wow, you really know your stuff!'
@@ -46,13 +55,16 @@ const STORE = {
             title: 'WRONG',
             text: 'The largest known carnivorous dinosaur is the Spinosaurus, which could grow to be over 50 feet long and weighed in at over 20 tonnes -- three times the weight of a T-rex.'
           }
-        }
+        },
       },
 
       {
         title: 'Question 2',
         text: 'What was the the first dinosaur ever discovered?',
-        img: '/resources/img/paleontology.jpg',
+        img: {
+          url: '/resources/img/paleontology.jpg',
+          alt: 'Dinosaur Bones'
+        },
         options: [
           {
             text: 'Ornithomimus',
@@ -73,7 +85,10 @@ const STORE = {
         ],
 
         feedback: {
-          img: '/resources/img/megalosaurus.gif',
+          img: {
+            url: '/resources/img/megalosaurus.gif',
+            alt: 'Megalosaurus'
+          },
           correct: {
             title: 'CORRECT',
             text: 'Wow, did you really know that, or did you look it up?'
@@ -88,7 +103,10 @@ const STORE = {
       {
         title: 'Question 3',
         text: 'What does the word dinosaur mean?',
-        img: '/resources/img/confused-dinosaur.jpg',
+        img: {
+          url: '/resources/img/confused-dinosaur.jpg',
+          alt: 'Confused Dinosaur'
+        },
         options: [
           {
             text: 'Terrible Lizzard',
@@ -109,7 +127,10 @@ const STORE = {
         ],
 
         feedback: {
-          img: '/resources/img/terrible.jpg',
+          img: {
+            url: '/resources/img/terrible.jpg',
+            alt: 'Terrible Lizzard Comic Book Cover'
+          },
           correct: {
             title: 'CORRECT',
             text: 'Don\'t let it go to your head too much.'
@@ -124,7 +145,10 @@ const STORE = {
       {
         title: 'Question 4',
         text: 'What were the plates on a stegosaurus\'s back used for?',
-        img: '/resources/img/stego.jpg',
+        img: {
+          url: '/resources/img/stego.jpg',
+          alt: 'Stegosaurus'
+        },
         options: [
           {
             text: 'Cooling',
@@ -145,7 +169,10 @@ const STORE = {
         ],
 
         feedback: {
-          img: '/resources/img/blood-vessels.jpg',
+          img: {
+            url: '/resources/img/blood-vessels.jpg',
+            alt: 'stegosaurus plate blood vessels'
+          },
           correct: {
             title: 'CORRECT',
             text: 'Are you sure you\'re not cheating? How could you possibly know that?'
@@ -160,7 +187,10 @@ const STORE = {
       {
         title: 'Question 5',
         text: 'What dinosaur had the largest head?',
-        img: '/resources/img/big-head.jpeg',
+        img: {
+          url: '/resources/img/big-head.jpeg',
+          alt: 'Dinosaur bobblehead'
+        },
         options: [
           {
             text: 'Diplodocus',
@@ -181,7 +211,10 @@ const STORE = {
         ],
 
         feedback: {
-          img: '/resources/img/triceratops.jpg',
+          img: {
+            url: '/resources/img/triceratops.jpg',
+            alt: 'Triceratops skull'
+          },
           correct: {
             title: 'CORRECT',
             text: 'Good job, I guess.'
@@ -194,4 +227,4 @@ const STORE = {
       },
     ]
   }    
-}
+};
