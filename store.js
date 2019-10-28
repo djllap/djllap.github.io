@@ -9,14 +9,6 @@ const STORE = {
     score: 0,
     questions: [
       {
-        title: 'How much do you know about Dinosaurs?',
-        text: 'Everyone loves Dinosaurs, but how much do we really know about them? Take this quiz to find out if your knowledge is up to snuff.',
-        img: {
-          url: '/resources/img/dinosaurs.jpeg',
-          alt: 'Grazing dinosaurs'
-        }
-      },
-      {
         title: 'Question 1',
         text: 'What was the largest canivorous dinosaur?',
         img: {

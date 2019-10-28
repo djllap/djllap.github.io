@@ -1,5 +1,4 @@
 'use strict';
-
 // TERMINOLOGY:
 // 'Stats and Header' is the top of the question box
 // 'Question Container' holds the question itself
