@@ -10,9 +10,11 @@
 
 // pageIndex: -1
 function generateLanding() {
-  return  `
+  return `
     <h2>How much do you know about Dinosaurs?</h2>
-    <img alt="Dinosaurs Grazing" src="/resources/img/dinosaurs.jpeg"></img>
+    <div class="imageHolder">
+      <img alt="Dinosaurs Grazing" src="/resources/img/dinosaurs.jpeg"></img>
+    </div>
     <p>Everyone loves Dinosaurs, but how much do we really know about them? Take this quiz to find out if your knowledge is up to snuff.</p>
     <form id="js-landing-form">
       <button class="submit-button" type="submit">BEGIN QUIZ</button>
@@ -34,17 +36,38 @@ function generateStats() {
   `;
 }
 
+// function generateQuestion(question) {
+//   return `
+//     <h2>${question.title}</h2>
+//     <div class="imageHolder">
+//       <img alt="${question.img.alt}"s6 src="${question.img.url}"></img>
+//     </div>
+//     <p class="question">
+//       ${question.text}
+//     </p>
+//     <form action="submit" id="js-question-box-form" class="question-form">
+//       <fieldset class='inputButton'>
+//         <label for="choice1"><input type="radio" name="choice" value="0" id="choice1">${question.options[0].text}</label><br>
+//       </fieldset>
+
+//     </form>
+//   `;
+// }
+
+
 function generateQuestion(question) {
   return `
     <h2>${question.title}</h2>
-    <img alt="${question.img.alt}"s6 src="${question.img.url}"></img>
+    <div class="imageHolder">
+      <img alt="${question.img.alt}"s6 src="${question.img.url}"></img>
+    </div>
     <p class="question">
       ${question.text}
     </p>
     <form action="submit" id="js-question-box-form" class="question-form">
       <div class="inputButton">
         <input type="radio" name="choice" value="0" id="choice1">
-        <label for="choice1" >${question.options[0].text}</label>
+        <label id="firstOption" for="choice1" >${question.options[0].text}</label>
         <br>
       </div>
       <div class="inputButton">
@@ -66,14 +89,16 @@ function generateQuestion(question) {
   `;
 }
 
-function generateFeedback(feedbackObj) { 
+function generateFeedback(feedbackObj) {
   console.log(feedbackObj);
   return `
     <h2>${feedbackObj.title}</h2>
-    <img 
-      alt="${STORE.quizObj.questions[STORE.quizObj.pageIndex].feedback.img.alt}" 
-      src="${STORE.quizObj.questions[STORE.quizObj.pageIndex].feedback.img.url}">
-    </img>
+    <div class="imageHolder">
+      <img 
+        alt="${STORE.quizObj.questions[STORE.quizObj.pageIndex].feedback.img.alt}" 
+        src="${STORE.quizObj.questions[STORE.quizObj.pageIndex].feedback.img.url}">
+      </img>
+    </div>
     <p>${feedbackObj.text}</p>
     <form action="submit" id="js-feedback-box-form">
       <button class="submit-button" type="submit">Next Question</button>
@@ -91,7 +116,7 @@ function generateResults() {
   return `
     <h2>Quiz Completed!</h2>
     <div class="results">
-      <h3>Final Score: ${score/5*100}%</h3>
+      <h3>Final Score: ${score / 5 * 100}%</h3>
     </div>
     <form action="submit" id="js-results-form">
       <button class="submit-button" type="submit">Start Over!</button>
@@ -107,7 +132,7 @@ function initQuestion() {
   // This should init the <div>'s we are working with.
   let index = STORE.quizObj.pageIndex;
   let question = STORE.quizObj.questions[index];
-  
+
   // Init Empty Divs
   // $('.container-tile').html(generateInitQuestionBox);
 
@@ -130,7 +155,7 @@ function renderFeedback(feedbackBool) {
   let question = STORE.quizObj.questions[index];
   let feedback = question.feedback;
 
-  if(feedbackBool) {
+  if (feedbackBool) {
     $('.container').html(generateStats() + generateFeedback(feedback.correct));
   } else {
     $('.container').html(generateStats() + generateFeedback(feedback.incorrect));
@@ -153,7 +178,7 @@ function renderBox() {
   } else if (nav === 'results') {
     renderResults();
   }
-  
+
 }
 
 // SECTION: - Handlers
@@ -182,7 +207,7 @@ function handleQuizSubmit() {
     // alert(`correctOption: ${correctOption}, chosenValue: ${chosenValue}`);
     // alert(correctOption === chosenValue ? 'correct!' : 'incorrect!');
 
-    if(correctOption === chosenValue) {
+    if (correctOption === chosenValue) {
       STORE.quizObj.score += 1;
       renderFeedback(true);
     } else {
@@ -196,7 +221,7 @@ function handleFeedbackSubmit() {
   $('.container').on('submit', '#js-feedback-box-form', function (event) {
     event.preventDefault();
     // Increment the Page
-    if (STORE.quizObj.pageIndex === STORE.quizObj.questions.length - 1){
+    if (STORE.quizObj.pageIndex === STORE.quizObj.questions.length - 1) {
       STORE.quizObj.nav = 'results';
     }
     STORE.quizObj.pageIndex += 1;
@@ -205,7 +230,7 @@ function handleFeedbackSubmit() {
 }
 
 function handleResultsSubmit() {
-  $('.container').on('submit', '#js-results-form', function (event){
+  $('.container').on('submit', '#js-results-form', function (event) {
     event.preventDefault();
     console.log('handleResultsSubmit ran');
     STORE.quizObj.nav = 'quiz';
@@ -213,9 +238,42 @@ function handleResultsSubmit() {
     STORE.quizObj.pageIndex = 0;
     renderBox();
   });
-  
-
 }
+
+function handleTest() {
+  $('.container').on('click', '.inputButton', function (event) {
+
+    event.stopPropagation();
+    // console.log($(this));
+    // let label = $(this).find("label");
+
+    // console.log(label.prop('id'));
+    // $('#' + label.prop('id')).click();
+
+    let input = $(this).find("input").attr('checked', !$(this).find("input").attr('checked'));
+
+    // console.log(input);
+    // console.log(label);
+    // // alert("hi");
+
+    // // this.checked = true;
+
+    // // console.log($(this).find("input"));
+    // let button = $(this).find("input");
+    // let checkedState = button.prop('checked');
+
+    // if (checkedState) {
+    //   button.attr('checked', false);
+    // } else {
+    //   button.attr('checked', true);
+    // renderBox();
+  });
+}
+
+
+// function handleChecked() {
+//   $('.container').on('checked', '')
+// }
 
 
 // SECTION: - Main
@@ -225,6 +283,7 @@ function handleQuestionBox() {
   handleFeedbackSubmit();
   handleLandingSubmit();
   handleResultsSubmit();
+  handleTest();
 }
 
 $(handleQuestionBox);
