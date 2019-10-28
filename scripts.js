@@ -41,18 +41,26 @@ function generateQuestion(question) {
     <p class="question">
       ${question.text}
     </p>
-    <form action="submit" id="js-question-box-form">
-      <input type="radio" name="choice" value="0" id="choice1">
-      <label for="choice1" class="inputButton">${question.options[0].text}</label>
-      <br>
-      <input type="radio" name="choice" value="1" id="choice2">
-      <label for="choice2" class="inputButton">${question.options[1].text}</label>
-      <br>
-      <input type="radio" name="choice" value="2" id="choice3">
-      <label for="choice3" class="inputButton">${question.options[2].text}</label>
-      <br>
-      <input type="radio" name="choice" value="3" id="choice4">
-      <label for="choice4" class="inputButton">${question.options[3].text}</label>
+    <form action="submit" id="js-question-box-form" class="question-form">
+      <div class="inputButton">
+        <input type="radio" name="choice" value="0" id="choice1">
+        <label for="choice1" >${question.options[0].text}</label>
+        <br>
+      </div>
+      <div class="inputButton">
+        <input type="radio" name="choice" value="1" id="choice2">
+        <label for="choice2">${question.options[1].text}</label>
+        <br>
+      </div>
+      <div class="inputButton">
+        <input type="radio" name="choice" value="2" id="choice3">
+        <label for="choice3">${question.options[2].text}</label>
+        <br>
+      </div>
+      <div class="inputButton">
+        <input type="radio" name="choice" value="3" id="choice4">
+        <label for="choice4">${question.options[3].text}</label>
+      </div>
       <button class="submit-button" type="submit">CLICK ME!</button>
     </form>
   `;
@@ -145,8 +153,6 @@ function renderBox() {
   } else if (nav === 'results') {
     renderResults();
   }
-  
-
   
 }
 
