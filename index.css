@@ -98,7 +98,7 @@ fieldset {
   border: 3px solid royalblue;
 }
 
-.submit-button:hover {
+.submit-button:hover, .submit-button:focus {
   opacity: 1;
   border: 3px solid skyblue;
 }
@@ -108,7 +108,7 @@ fieldset {
 }
 
 input[type="radio"] {
-  display:none;
+  opacity: 0;
 }
 
 .inputButton {
