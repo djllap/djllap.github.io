@@ -1,1 +1,1 @@
-This is a quiz.com
+Dinosaur quiz made by Daniel Kent and Harrison ffor Thinkful Engineering program in October 2019.
