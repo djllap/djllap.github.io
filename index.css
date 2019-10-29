@@ -11,7 +11,8 @@
 }
 
 body {
-  background-image: url('/resources/img/background.jpg')
+  background-image: url('/resources/img/background.jpg');
+  padding-bottom: 4em;
 }
 
 header {
@@ -52,11 +53,12 @@ fieldset {
 
 .container-tile {
   margin: 0 auto 0 auto;
-  border: 1px solid black;
   width: 50%;
   min-width: 280px;
-  padding-bottom: 20px;
+  padding: 1em 0 3em 0;
   background-color: #fff;
+  box-shadow: 8px 12px 5px 1px rgba(0, 0, 0, 0.4);
+  border-radius: 12px;;
 }
 
 .container-tile h2 {
