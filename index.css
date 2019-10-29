@@ -128,11 +128,6 @@ input[type="radio"] {
   width: 100%;
 }
 
-.inputButton:active {
-  background-color:#640000;
-  opacity: 1.0
-}
-
 .stats {
   display: flex;
   justify-content: space-around;
@@ -141,9 +136,8 @@ input[type="radio"] {
   color: #6e6d6c;
 }
 
-label {
-  /* width: 100%; */
-  /* border: 1px solid white; */
+.depressed {
+  background-color:#640000;
 }
 
 fieldset {

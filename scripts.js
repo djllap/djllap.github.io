@@ -242,12 +242,16 @@ function handleResultsSubmit() {
   });
 }
 
-function handleTest() {
+function handleRadioToggle() {
   $('.container').on('click', '.inputButton', function (event) {
     event.stopPropagation();
-    let input = $(this).find("input");
+    let input = $(this).find('input');
     let checked = input.prop('checked');  
     input.prop('checked', true);
+
+    //applies styles to selected option
+    $(this).closest('fieldset').children().removeClass('depressed');
+    $(this).toggleClass('depressed');
   });
 }
 
@@ -259,7 +263,7 @@ function handleQuestionBox() {
   handleFeedbackSubmit();
   handleLandingSubmit();
   handleResultsSubmit();
-  handleTest();
+  handleRadioToggle();
 }
 
 $(handleQuestionBox);
