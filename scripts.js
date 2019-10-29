@@ -1,6 +1,5 @@
 'use strict';
 // TERMINOLOGY:
-// 'Stats and Header' is the top of the question box
 // 'Question Container' holds the question itself
 
 
@@ -73,7 +72,6 @@ function generateQuestion(question) {
 }
 
 function generateFeedback(feedbackObj) {
-  console.log(feedbackObj);
   let submitText;
   if (STORE.quizObj.pageIndex === STORE.quizObj.questions.length-1) {
     submitText = 'See Results';
@@ -97,15 +95,24 @@ function generateFeedback(feedbackObj) {
 
 // pageIndex: questions.length
 function generateResults() {
-
-  let currentQuestion = STORE.quizObj.pageIndex + 1;
-  let totalQuestions = STORE.quizObj.questions.length;
   let score = STORE.quizObj.score;
+  const img = {};
+  let message = '';
+  if (score >= 4) {
+    img.url = 'resources/img/happy_dinosaur.jpg';
+    img.alt = 'Happy dinosaur';
+    message = 'You actually know a thing or two about dinosaurs. I\'m impressed! You know, I have a great idea for a dinosaur park, where we bring all the dinosaurs back to life and charge other people a ton of money to see them. Instant Profit! What could go wrong?';
+  } else if (score <= 3) {
+    img.url = 'resources/img/sad_dinosaur.jfif';
+    img.alt = 'sad dinosaur';
+    message = 'The dinosaurs are all greatly disappointed in you. You know nothing about them. How can you face the future when when do not know the past?';
+  }
 
   return `
-    <h2>Quiz Completed!</h2>
-    <div class="results">
-      <h3>Final Score: ${score / 5 * 100}%</h3>
+    <h2 class='results-score'>Final Score: ${score / 5 * 100}%</h2>
+    <div class="results">   
+      <img src=${img.url} alt=${img.alt}</img>
+      <p class="results-message">${message}</p>
     </div>
     <form action="submit" id="js-results-form">
       <button class="submit-button" type="submit">Start Over!</button>
@@ -114,20 +121,6 @@ function generateResults() {
 }
 
 // SECTION: - Putting the HTML into the DIVs
-
-function initQuestion() {
-  console.log('initQuestion ran');
-  // Run this when generating questions.
-  // This should init the <div>'s we are working with.
-  let index = STORE.quizObj.pageIndex;
-  let question = STORE.quizObj.questions[index];
-
-  // Init Empty Divs
-  // $('.container-tile').html(generateInitQuestionBox);
-
-  // Fill the Landing <div>
-  $('.container').html(generateLanding());
-}
 
 function renderQuestion() {
   // Renders the Question Box content
@@ -161,8 +154,6 @@ function renderBox() {
   if (nav === 'landing') {
     $('.container').html(generateLanding());
   } else if (nav === 'quiz') {
-    let index = STORE.quizObj.pageIndex;
-    let question = STORE.quizObj.questions[index];
     renderQuestion();
   } else if (nav === 'results') {
     renderResults();
@@ -175,7 +166,6 @@ function renderBox() {
 function handleLandingSubmit() {
   $('.container').on('submit', '#js-landing-form', function (event) {
     event.preventDefault();
-    console.log('handle landing submit ran');
     STORE.quizObj.nav = 'quiz';
     renderBox();
   });
@@ -191,10 +181,6 @@ function handleQuizSubmit() {
 
     // Grab the 'checked' radio value on submit (as Int)
     let chosenValue = Number(document.querySelector('input[name="choice"]:checked').value);
-
-    // DEBUG: - Feedback on Question
-    // alert(`correctOption: ${correctOption}, chosenValue: ${chosenValue}`);
-    // alert(correctOption === chosenValue ? 'correct!' : 'incorrect!');
 
     if (correctOption === chosenValue) {
       STORE.quizObj.score += 1;
@@ -221,7 +207,6 @@ function handleFeedbackSubmit() {
 function handleResultsSubmit() {
   $('.container').on('submit', '#js-results-form', function (event) {
     event.preventDefault();
-    console.log('handleResultsSubmit ran');
     STORE.quizObj.nav = 'quiz';
     STORE.quizObj.score = 0;
     STORE.quizObj.pageIndex = 0;
@@ -232,8 +217,7 @@ function handleResultsSubmit() {
 function handleRadioToggle() {
   $('.container').on('click', '.inputButton', function (event) {
     event.stopPropagation();
-    let input = $(this).find('input');
-    let checked = input.prop('checked');  
+    let input = $(this).find('input');  
     input.prop('checked', true);
 
     //applies styles to selected option
@@ -241,7 +225,6 @@ function handleRadioToggle() {
     $(this).toggleClass('depressed');
   });
 }
-
 
 // SECTION: - Main
 function handleQuestionBox() {
@@ -254,50 +237,3 @@ function handleQuestionBox() {
 }
 
 $(handleQuestionBox);
-
-
-
-// // function handleStartQuiz() {
-// //   // Begins the Quiz -> Change View to Question 1
-// // }
-
-// // function handleQuestionSubmit() {
-// //   // Check to see if correct
-// //   // Update information
-// //   // Navigate to confirmation page
-// // }
-
-// // Rendering
-// // CORRECT PAGE - INCORRECT PAGE 
-
-// // function renderFeedbackPage(bool: )
-
-// function renderFeedback(question) {
-//   // check right/wrong -> display page
-
-//   // // Change submit button to a 'next page' button
-//   // // Display confirmation text
-// }
-
-// // function renderQuestionTitle(question) {
-// //   // Renders the 'Title ${questionNumber}'
-// //   return `<h2>${question.title}</h2>`;
-
-// // }
-
-// // function renderQuestionText(question) {
-// //   // Renders the text of the question
-// //   return `<p class="question">${question.text}</p>`;
-// // }
-
-// // function renderRadio() {
-// //   // Renders the Radio Buttons
-// // }
-
-// // function renderQuestionOptions() {
-// //   renderRadio();
-// // }
-
-// function renderStats() {
-//   // Renders the stats: - question number + correct/incorrect
-// }
