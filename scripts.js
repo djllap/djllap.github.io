@@ -81,7 +81,7 @@ function generateFeedback(feedbackObj) {
     submitText = 'Next Question';
   }
   return `
-    <h2>${feedbackObj.title}</h2>
+    <h2 class="feedback-h2">${feedbackObj.title}</h2>
     <div class="imageHolder">
       <img 
         alt="${STORE.quizObj.questions[STORE.quizObj.pageIndex].feedback.img.alt}" 

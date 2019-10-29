@@ -46,6 +46,11 @@ fieldset {
   border: 0px;
 }
 
+.feedback-h2 {
+  font-size: 3em;
+  font-weight: bolder;
+}
+
 .imageHolder {
   margin: 0px auto 0px auto;
   /* border: 10px solid red; */
