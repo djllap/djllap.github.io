@@ -36,25 +36,6 @@ function generateStats() {
   `;
 }
 
-// function generateQuestion(question) {
-//   return `
-//     <h2>${question.title}</h2>
-//     <div class="imageHolder">
-//       <img alt="${question.img.alt}"s6 src="${question.img.url}"></img>
-//     </div>
-//     <p class="question">
-//       ${question.text}
-//     </p>
-//     <form action="submit" id="js-question-box-form" class="question-form">
-//       <fieldset class='inputButton'>
-//         <label for="choice1"><input type="radio" name="choice" value="0" id="choice1">${question.options[0].text}</label><br>
-//       </fieldset>
-
-//     </form>
-//   `;
-// }
-
-
 function generateQuestion(question) {
   return `
     <h2>${question.title}</h2>
@@ -86,13 +67,19 @@ function generateQuestion(question) {
           <label for="choice4">${question.options[3].text}</label>
         </div>
       </fieldset>
-      <button class="submit-button" type="submit">CLICK ME!</button>
+      <button class="submit-button" type="submit">SUBMIT</button>
     </form>
   `;
 }
 
 function generateFeedback(feedbackObj) {
   console.log(feedbackObj);
+  let submitText;
+  if (STORE.quizObj.pageIndex === STORE.quizObj.questions.length-1) {
+    submitText = 'See Results';
+  } else {
+    submitText = 'Next Question';
+  }
   return `
     <h2>${feedbackObj.title}</h2>
     <div class="imageHolder">
@@ -103,7 +90,7 @@ function generateFeedback(feedbackObj) {
     </div>
     <p>${feedbackObj.text}</p>
     <form action="submit" id="js-feedback-box-form">
-      <button class="submit-button" type="submit">Next Question</button>
+      <button class="submit-button" type="submit">${submitText}</button>
     </form>
   `;
 }

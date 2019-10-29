@@ -53,7 +53,7 @@ const STORE = {
 
       {
         title: 'Question 2',
-        text: 'What was the the first dinosaur ever discovered?',
+        text: 'What was the first dinosaur ever discovered?',
         img: {
           url: '/resources/img/paleontology.jpg',
           alt: 'Dinosaur Bones'

@@ -79,7 +79,19 @@ fieldset {
 .submit-button {
   margin: 20px auto 0 auto;
   width: 100%;
-  padding: 8px;
+  padding: 12px;
+  background-color: royalblue;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  font-size: 1.2em;
+  opacity: 0.8;
+  border: 3px solid royalblue;
+}
+
+.submit-button:hover {
+  opacity: 1;
+  border: 3px solid skyblue;
 }
 
 .question-form {
@@ -87,20 +99,9 @@ fieldset {
 }
 
 input[type="radio"] {
-  /* width: 1000px; */
-  /* display: hidden; */
   visibility: hidden;
-  /* width: 0px; */
   opacity: 1.0;
-  /* min-width: 100%; */
-  /* min-height: 100%; */
-  /* width: 100%; */
-  /* border: 0px solid white; */
 }
-
-/* input[type="radio"]:checked {
-  width: 500px;
-} */
 
 .inputButton {
   width: 100%;
@@ -111,15 +112,11 @@ input[type="radio"] {
   padding: 10px;
   opacity: 0.8;
   border-radius: 5px;
+  border: 3px solid darkgreen;
   margin-bottom: 5px;
-
-  /* margin: 0 auto 5px auto; */
-  /* display: flex;
-  justify-content: space-between; */
 }
 
 .inputButton:hover, .inputButton:focus-within {
-  opacity: 0.5;
   opacity: 1;
   border: 3px solid #55a301;
 }
