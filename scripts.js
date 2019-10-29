@@ -12,7 +12,7 @@ function generateLanding() {
   return `
     <h2>How much do you know about Dinosaurs?</h2>
     <div class="imageHolder">
-      <img alt="Dinosaurs Grazing" src="/resources/img/dinosaurs.jpeg"></img>
+      <img alt="Dinosaurs Grazing" src="/resources/img/dinosaurs.jpg"></img>
     </div>
     <p>Everyone loves Dinosaurs, but how much do we really know about them? Take this quiz to find out if your knowledge is up to snuff.</p>
     <form id="js-landing-form">
