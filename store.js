@@ -8,6 +8,7 @@ const STORE = {
     nav: 'landing',
     pageIndex: 0,
     score: 0,
+    wrongAnswers: 0,
     questions: [
       {
         title: 'Question 1',

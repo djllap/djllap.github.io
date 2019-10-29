@@ -26,11 +26,15 @@ function generateStats() {
   let currentQuestion = STORE.quizObj.pageIndex + 1;
   let totalQuestions = STORE.quizObj.questions.length;
   let score = STORE.quizObj.score;
+  let wrong = STORE.quizObj.wrongAnswers;
 
   return `
     <p class="stats">
       <span>Question: ${currentQuestion}/${totalQuestions}</span>
-      <span>Score: ${score}</span>
+      <span>
+        <span class="stats-correct">Correct: ${score}</span>
+        <span>Incorrect: ${wrong}</span>
+      </span>
     </p>
   `;
 }
@@ -186,6 +190,7 @@ function handleQuizSubmit() {
       STORE.quizObj.score += 1;
       renderFeedback(true);
     } else {
+      STORE.quizObj.wrongAnswers += 1;
       renderFeedback(false);
     }
 

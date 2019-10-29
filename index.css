@@ -148,3 +148,7 @@ input[type="radio"] {
 fieldset {
   width: 100%;
 }
+
+.stats-correct {
+  margin-right: 20px;
+}
